@@ -11,13 +11,15 @@ export class GifsService {
   private _apiKey : string = 'wItuOBvlpBLFlLN0bBXz398klrJJny7c';
   private _historial: string[] = [];
 
+  public resultados: any[] = [];
+
   constructor( private http: HttpClient ) {}
 
   get historial():string[]{
     return [...this._historial];
   }
 
-  buscarGifs(query: string){
+  buscarGifs(query: string = ''){
 
     query = query.trim().toLowerCase();
     
@@ -30,11 +32,12 @@ export class GifsService {
 
     this.http.get(callUrl)
         .subscribe(  (resp: any) => {
-          console.log(resp.data);
-        })
+          this.resultados = resp.data;
+          console.log(this.resultados);
+        });
     
 
-
+    
     console.log(this._historial);
   }
   
