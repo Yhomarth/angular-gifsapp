@@ -14,7 +14,11 @@ export class SidebarComponent  {
     return this.getService.historial
   }
 
-  ngOnInit(): void {
+
+  cargarImagen(  imgBuscar: string ) :void {
+    console.log('a buscar la imagen:', imgBuscar);
+    this.getService.buscarGifs(imgBuscar);
   }
+
 
 }
